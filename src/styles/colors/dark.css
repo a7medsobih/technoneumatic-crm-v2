@@ -1,0 +1,69 @@
+/**
+ * Watfil dark theme — color tokens only
+ */
+
+[data-theme="dark"],
+.dark {
+  /* Primary */
+  --watfil-primary-light: #123447;
+  --watfil-accent: #123447;
+  --watfil-accent-foreground: #7dd3fc;
+
+  /* Sidebar (darker than the rest of the app) */
+  --watfil-sidebar-bg: #070f1c;
+  --watfil-sidebar-text-primary: #f1f5f9;
+  --watfil-sidebar-text-secondary: #94a3b8;
+  --watfil-sidebar-text-tertiary: #64748b;
+  --watfil-sidebar-border: rgba(255, 255, 255, 0.06);
+  --watfil-sidebar-hover: rgba(255, 255, 255, 0.05);
+  --watfil-sidebar-active-bg: rgba(125, 211, 252, 0.16);
+  --watfil-sidebar-active-text: #7dd3fc;
+
+  /* Backgrounds */
+  --watfil-background: #0f172a;
+  --watfil-background-gray: #1e293b;
+  --watfil-background-light: #1e293b;
+  --watfil-background-secondary: #334155;
+  --watfil-card-bg: #1e293b;
+  --watfil-foreground: #f1f5f9;
+
+  /* Text */
+  --watfil-text-primary: #f8fafc;
+  --watfil-text-secondary: #cbd5e1;
+  --watfil-text-tertiary: #94a3b8;
+  --watfil-text-dark: #f1f5f9;
+  --watfil-text-light: #64748b;
+  --watfil-text-gray: #94a3b8;
+  --watfil-text-blue: #7dd3fc;
+  --watfil-text-on-primary: #ffffff;
+
+  /* Borders */
+  --watfil-border: #334155;
+  --watfil-border-gray: #475569;
+  --watfil-border-light: #334155;
+  --watfil-border-dark: #475569;
+
+  /* Glassmorphism */
+  --watfil-glass-bg: rgba(30, 41, 59, 0.7);
+  --watfil-glass-bg-light: rgba(30, 41, 59, 0.8);
+  --watfil-glass-bg-medium: rgba(30, 41, 59, 0.6);
+  --watfil-glass-bg-heavy: rgba(30, 41, 59, 0.4);
+  --watfil-glass-border: rgba(255, 255, 255, 0.1);
+  --watfil-glass-border-light: rgba(255, 255, 255, 0.15);
+  --watfil-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --watfil-glass-shadow-light: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  --watfil-glass-shadow-medium: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --watfil-glass-shadow-heavy: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+  /* Theme gradients */
+  --watfil-gradient-sidebar: linear-gradient(180deg, #0a1626 0%, #060d18 100%);
+  --watfil-gradient-header: linear-gradient(90deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%);
+  --watfil-gradient-card: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.9) 100%);
+  --watfil-gradient-subtle: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  --watfil-gradient-overlay: linear-gradient(180deg, rgba(31, 164, 223, 0.18) 0%, transparent 100%);
+
+  /* Shadows */
+  --watfil-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --watfil-shadow-card-hover: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+  --watfil-shadow-header: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

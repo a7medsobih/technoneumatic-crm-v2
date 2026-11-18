@@ -1,0 +1,102 @@
+/**
+ * Watfil light theme — color tokens only
+ */
+
+:root {
+  /* Primary */
+  --watfil-primary: #1fa4df;
+  --watfil-primary-50: #f0f9ff;
+  --watfil-primary-100: #e0f2fe;
+  --watfil-primary-200: #bae6fd;
+  --watfil-primary-300: #7dd3fc;
+  --watfil-primary-400: #38bdf8;
+  --watfil-primary-500: #1fa4df;
+  --watfil-primary-600: #0284c7;
+  --watfil-primary-700: #0369a1;
+  --watfil-primary-800: #075985;
+  --watfil-primary-900: #0c4a6e;
+  --watfil-primary-light: #ECF9FD;
+
+  --watfil-button: #2aa9e0;
+  --watfil-cyan: #1dc9c9;
+  --watfil-accent: #ECF9FD;
+  --watfil-accent-foreground: #0369a1;
+
+  /* Sidebar (light surface, slightly darker than the rest of the app) */
+  --watfil-sidebar-bg: #e9eef4;
+  --watfil-sidebar-text-primary: #0f172a;
+  --watfil-sidebar-text-secondary: #64748b;
+  --watfil-sidebar-text-tertiary: #94a3b8;
+  --watfil-sidebar-border: #d7dfe8;
+  --watfil-sidebar-hover: rgba(15, 23, 42, 0.05);
+  --watfil-sidebar-active-bg: var(--watfil-accent);
+  --watfil-sidebar-active-text: var(--watfil-accent-foreground);
+
+  /* Gradients */
+  --watfil-gradient-primary: linear-gradient(135deg, #1fa4df 0%, #1dc9c9 100%);
+  --watfil-gradient-primary-hover: linear-gradient(135deg, #0284c7 0%, #14b8b8 100%);
+  --watfil-gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --watfil-gradient-warning: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --watfil-gradient-error: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --watfil-gradient-info: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --watfil-gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+
+  /* Backgrounds */
+  --watfil-background: #ffffff;
+  --watfil-background-gray: #f8fafc;
+  --watfil-background-light: #f9fbfb;
+  --watfil-background-secondary: #f1f5f9;
+  --watfil-card-bg: #ffffff;
+  --watfil-foreground: #1f292e;
+
+  /* Text */
+  --watfil-text-primary: #0f172a;
+  --watfil-text-secondary: #64748b;
+  --watfil-text-tertiary: #94a3b8;
+  --watfil-text-dark: #1e293b;
+  --watfil-text-light: #cbd5e1;
+  --watfil-text-gray: #475569;
+  --watfil-text-blue: #003f55;
+  --watfil-text-on-primary: #ffffff;
+
+  /* Borders */
+  --watfil-border: #e2e8f0;
+  --watfil-border-gray: #e7edef;
+  --watfil-border-light: #f1f5f9;
+  --watfil-border-dark: #cbd5e1;
+
+  /* State colors */
+  --watfil-success: #10b981;
+  --watfil-success-light: #d1fae5;
+  --watfil-success-dark: #065f46;
+
+  --watfil-warning: #f59e0b;
+  --watfil-warning-light: #fef3c7;
+  --watfil-warning-dark: #92400e;
+
+  --watfil-error: #ef4444;
+  --watfil-error-light: #fee2e2;
+  --watfil-error-dark: #991b1b;
+
+  --watfil-info: #3b82f6;
+  --watfil-info-light: #dbeafe;
+  --watfil-info-dark: #1e40af;
+
+  /* Glassmorphism */
+  --watfil-glass-bg: rgba(255, 255, 255, 0.7);
+  --watfil-glass-border: rgba(255, 255, 255, 0.18);
+  --watfil-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --watfil-glass-bg-light: rgba(255, 255, 255, 0.8);
+  --watfil-glass-bg-medium: rgba(255, 255, 255, 0.6);
+  --watfil-glass-bg-heavy: rgba(255, 255, 255, 0.4);
+  --watfil-glass-border-light: rgba(255, 255, 255, 0.3);
+  --watfil-glass-shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  --watfil-glass-shadow-medium: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --watfil-glass-shadow-heavy: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+
+  /* Theme gradients */
+  --watfil-gradient-sidebar: linear-gradient(180deg, #eef2f7 0%, #e4eaf1 100%);
+  --watfil-gradient-header: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  --watfil-gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+  --watfil-gradient-overlay: linear-gradient(180deg, rgba(31, 164, 223, 0.1) 0%, transparent 100%);
+}

@@ -1,0 +1,121 @@
+{
+  "title": "الإعلانات",
+  "subtitle": "إدارة الحملات والحجوزات وتوفر مواقع الإعلان.",
+  "tabs": {
+    "campaigns": "الحملات",
+    "bookings": "الحجوزات",
+    "book": "حجز مواقع"
+  },
+  "actions": {
+    "createCampaign": "حملة جديدة",
+    "editCampaign": "تعديل الحملة",
+    "bookDays": "حجز الأيام",
+    "checkAvailability": "التحقق من التوفر",
+    "viewStats": "عرض الإحصائيات"
+  },
+  "scopes": {
+    "homepage": "الصفحة الرئيسية",
+    "governorate": "محافظة",
+    "city": "مدينة"
+  },
+  "statuses": {
+    "active": "نشطة",
+    "paused": "متوقفة",
+    "draft": "مسودة",
+    "confirmed": "مؤكدة",
+    "cancelled": "ملغاة",
+    "pending": "قيد الانتظار"
+  },
+  "commissionTypes": {
+    "percentage": "نسبة مئوية",
+    "fixed": "مبلغ ثابت"
+  },
+  "fields": {
+    "title": "عنوان الحملة",
+    "targetUrl": "رابط الهدف",
+    "utmSource": "مصدر UTM",
+    "utmMedium": "وسيط UTM",
+    "utmCampaign": "حملة UTM",
+    "commissionType": "نوع العمولة",
+    "commissionAmount": "قيمة العمولة",
+    "status": "الحالة",
+    "zone": "منطقة الإعلان",
+    "position": "المركز",
+    "campaign": "الحملة",
+    "dates": "التواريخ",
+    "fromDate": "من",
+    "toDate": "إلى",
+    "scope": "النطاق",
+    "location": "الموقع",
+    "slotPrices": "أسعار المواقع",
+    "pricePerDay": "{{price}} جنيه / يوم",
+    "positionLabel": "المركز {{position}}",
+    "active": "نشط",
+    "inactive": "غير نشط"
+  },
+  "table": {
+    "campaigns": {
+      "title": "العنوان",
+      "status": "الحالة",
+      "commission": "العمولة",
+      "targetUrl": "رابط الهدف",
+      "actions": "إجراءات"
+    },
+    "bookings": {
+      "zone": "المنطقة",
+      "position": "المركز",
+      "dates": "التواريخ",
+      "status": "الحالة",
+      "campaign": "الحملة"
+    },
+    "zones": {
+      "zone": "المنطقة",
+      "scope": "النطاق",
+      "location": "الموقع",
+      "status": "الحالة",
+      "prices": "الأسعار"
+    }
+  },
+  "availability": {
+    "title": "توفر المواقع",
+    "empty": "اختر منطقة ونطاق تاريخ لعرض التوفر.",
+    "available": "متاح",
+    "unavailable": "غير متاح",
+    "noDays": "لا توجد بيانات توفر لهذا النطاق."
+  },
+  "stats": {
+    "title": "إحصائيات الحملة",
+    "impressions": "مرات الظهور",
+    "clicks": "النقرات",
+    "orders": "الطلبات",
+    "sales": "إجمالي المبيعات"
+  },
+  "messages": {
+    "campaignCreated": "تم إنشاء الحملة بنجاح.",
+    "campaignUpdated": "تم تحديث الحملة بنجاح.",
+    "bookingCreated": "تم حجز أيام الإعلان بنجاح.",
+    "loadError": "تعذر تحميل بيانات الإعلانات. حاول مرة أخرى.",
+    "saveError": "تعذر حفظ التغييرات. حاول مرة أخرى."
+  },
+  "validation": {
+    "titleRequired": "عنوان الحملة مطلوب.",
+    "targetUrlRequired": "رابط الهدف مطلوب.",
+    "targetUrlInvalid": "أدخل رابطاً صالحاً.",
+    "commissionTypeRequired": "اختر نوع العمولة.",
+    "commissionAmountRequired": "قيمة العمولة مطلوبة.",
+    "commissionAmountPositive": "يجب أن تكون قيمة العمولة أكبر من صفر.",
+    "statusRequired": "اختر الحالة.",
+    "zoneRequired": "اختر منطقة إعلان.",
+    "positionRequired": "اختر المركز.",
+    "positionInvalid": "يجب أن يكون المركز 1 أو 2 أو 3.",
+    "campaignRequired": "اختر حملة.",
+    "datesRequired": "اختر تاريخاً واحداً على الأقل.",
+    "dateRangeRequired": "اختر نطاق تاريخ صالح."
+  },
+  "filters": {
+    "status": "الحالة",
+    "scope": "النطاق",
+    "allStatuses": "كل الحالات",
+    "allScopes": "كل النطاقات"
+  }
+}

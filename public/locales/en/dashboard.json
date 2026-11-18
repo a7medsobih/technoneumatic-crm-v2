@@ -1,0 +1,53 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome back",
+  "subtitle": "Track Watfil performance and daily operations from one place.",
+  "statistics": "Statistics",
+  "recentActivity": "Recent activity",
+  "users": "Users",
+  "reports": "Reports",
+  "settings": "Settings",
+  "adminName": "Watfil Admin",
+  "adminRole": "System administrator",
+  "menu": {
+    "dashboard": "Overview",
+    "customers": "Customers",
+    "orders": "Orders",
+    "ads": "Ads",
+    "finance": "Finance and points",
+    "wallet": "Wallets"
+  },
+  "pages": {
+    "dashboard": {
+      "title": "Overview",
+      "description": "A quick summary of the most important dashboard indicators."
+    },
+    "customers": {
+      "title": "Customers",
+      "description": "Manage customers and track their profile and activity."
+    },
+    "orders": {
+      "title": "Orders",
+      "description": "Track orders, fulfillment, and delivery statuses."
+    },
+    "ads": {
+      "title": "Ads",
+      "description": "Manage campaigns and in-app banners."
+    },
+    "finance": {
+      "title": "Finance and points",
+      "description": "Track financial indicators and customer points."
+    },
+    "wallet": {
+      "title": "Wallets",
+      "description": "Manage wallet balances and financial transactions."
+    }
+  },
+  "stats": {
+    "companies": "Companies",
+    "customers": "Customers",
+    "orders": "Today's orders",
+    "wallet": "Wallet balance"
+  },
+  "emptyFeature": "This section content will appear here when its data is connected."
+}

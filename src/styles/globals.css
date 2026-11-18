@@ -1,0 +1,308 @@
+/**
+ * Watfil Theme - نظام التصميم العصري لواتفيل
+ * Design tokens (spacing, typography, shadows, layout, components)
+ * Color tokens live in ./colors/light.css and ./colors/dark.css
+ */
+
+@import "tailwindcss";
+@import "./colors/light.css";
+@import "./colors/dark.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--watfil-background);
+  --color-foreground: var(--watfil-foreground);
+  --color-card: var(--watfil-card-bg);
+  --color-card-foreground: var(--watfil-foreground);
+  --color-primary: var(--watfil-primary);
+  --color-primary-foreground: var(--watfil-text-on-primary);
+  --color-secondary: var(--watfil-background-secondary);
+  --color-secondary-foreground: var(--watfil-text-primary);
+  --color-accent: var(--watfil-accent);
+  --color-accent-foreground: var(--watfil-accent-foreground);
+  --color-destructive: var(--watfil-error);
+  --color-border: var(--watfil-border);
+  --color-input: var(--watfil-border);
+  --color-ring: var(--watfil-primary);
+
+  --color-watfil-primary: var(--watfil-primary);
+  --color-watfil-background: var(--watfil-background);
+  --color-watfil-background-gray: var(--watfil-background-gray);
+  --color-watfil-background-light: var(--watfil-background-light);
+  --color-watfil-background-secondary: var(--watfil-background-secondary);
+  --color-watfil-card-bg: var(--watfil-card-bg);
+  --color-watfil-foreground: var(--watfil-foreground);
+  --color-watfil-text-primary: var(--watfil-text-primary);
+  --color-watfil-text-secondary: var(--watfil-text-secondary);
+  --color-watfil-text-tertiary: var(--watfil-text-tertiary);
+  --color-watfil-border: var(--watfil-border);
+  --color-watfil-border-light: var(--watfil-border-light);
+  --color-watfil-success: var(--watfil-success);
+  --color-watfil-warning: var(--watfil-warning);
+  --color-watfil-error: var(--watfil-error);
+  --color-watfil-info: var(--watfil-info);
+}
+
+:root {
+  /* ========== Focus & Layout ========== */
+  --watfil-focus-ring: 0 0 0 3px
+    color-mix(in srgb, var(--watfil-primary) 10%, transparent);
+  --watfil-width-auth-card: 420px;
+
+  /* ========== المسافات - Spacing ========== */
+  --watfil-spacing-xs: 4px;
+  --watfil-spacing-sm: 8px;
+  --watfil-spacing-md: 16px;
+  --watfil-spacing-lg: 24px;
+  --watfil-spacing-xl: 32px;
+  --watfil-spacing-2xl: 48px;
+  --watfil-spacing-3xl: 64px;
+
+  /* ========== الحواف المستديرة - Border Radius ========== */
+  --watfil-radius-sm: 8px;
+  --watfil-radius-md: 12px;
+  --watfil-radius-lg: 16px;
+  --watfil-radius-xl: 20px;
+  --watfil-radius-2xl: 24px;
+  --watfil-radius-full: 9999px;
+
+  /* ========== الظلال المحسّنة - Enhanced Shadows ========== */
+  --watfil-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --watfil-shadow-sm:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --watfil-shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --watfil-shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --watfil-shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --watfil-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --watfil-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --watfil-shadow-card-hover: 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+  --watfil-shadow-header: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --watfil-shadow-button: 0 4px 14px 0 rgba(31, 164, 223, 0.25);
+  --watfil-shadow-button-hover: 0 6px 20px rgba(31, 164, 223, 0.35);
+  --watfil-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* ========== الخطوط - Typography ========== */
+  --watfil-font-family: "Cairo", -apple-system, BlinkMacSystemFont, sans-serif;
+  --watfil-font-size-xs: 0.75rem;
+  --watfil-font-size-sm: 0.875rem;
+  --watfil-font-size-base: 1rem;
+  --watfil-font-size-lg: 1.125rem;
+  --watfil-font-size-xl: 1.25rem;
+  --watfil-font-size-2xl: 1.5rem;
+  --watfil-font-size-3xl: 1.875rem;
+  --watfil-font-size-4xl: 2.25rem;
+  --watfil-font-size-5xl: 3rem;
+
+  /* ========== أوزان الخطوط - Font Weights ========== */
+  --watfil-font-weight-light: 300;
+  --watfil-font-weight-normal: 400;
+  --watfil-font-weight-medium: 500;
+  --watfil-font-weight-semibold: 600;
+  --watfil-font-weight-bold: 700;
+  --watfil-font-weight-black: 900;
+
+  /* ========== التحولات - Transitions ========== */
+  --watfil-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --watfil-transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --watfil-transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --watfil-transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ========== Layout Variables ========== */
+  --watfil-sidebar-width: 280px;
+  --watfil-sidebar-width-collapsed: 80px;
+  --watfil-header-height: 70px;
+  --watfil-content-padding: 24px;
+  --watfil-container-max-width: 1280px;
+
+  /* ========== Z-Index ========== */
+  --watfil-z-dropdown: 9999;
+  --watfil-z-sticky: 1020;
+  --watfil-z-fixed: 1030;
+  --watfil-z-modal-backdrop: 1040;
+  --watfil-z-modal: 1050;
+  --watfil-z-popover: 1060;
+  --watfil-z-tooltip: 1070;
+
+  /* ========== Backdrop blur ========== */
+  --watfil-backdrop-blur-sm: blur(8px);
+  --watfil-backdrop-blur-md: blur(12px);
+  --watfil-backdrop-blur-lg: blur(16px);
+
+  /* ========== Typography Enhanced ========== */
+  --watfil-line-height-tight: 1.25;
+  --watfil-line-height-normal: 1.5;
+  --watfil-line-height-relaxed: 1.75;
+  --watfil-letter-spacing-tight: -0.025em;
+  --watfil-letter-spacing-normal: 0;
+  --watfil-letter-spacing-wide: 0.025em;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    font-family: var(--watfil-font-family);
+  }
+
+  html.dark,
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--watfil-background);
+    color: var(--watfil-foreground);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+/* ========== Sidebar Surface ========== */
+/* Scope the dark sidebar surface by locally remapping color tokens, so the
+   existing utility classes (text/border/bg) automatically adapt. */
+.watfil-sidebar {
+  --watfil-card-bg: var(--watfil-sidebar-bg);
+  --watfil-text-primary: var(--watfil-sidebar-text-primary);
+  --watfil-text-secondary: var(--watfil-sidebar-text-secondary);
+  --watfil-text-tertiary: var(--watfil-sidebar-text-tertiary);
+  --watfil-border: var(--watfil-sidebar-border);
+  --watfil-border-light: var(--watfil-sidebar-border);
+  --watfil-background-secondary: var(--watfil-sidebar-hover);
+  background-color: var(--watfil-sidebar-bg);
+  background-image: var(--watfil-gradient-sidebar);
+}
+
+/* ========== Modern Button Styles ========== */
+.watfil-button-primary {
+  background: var(--watfil-gradient-primary);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--watfil-radius-md);
+  border: none;
+  font-weight: var(--watfil-font-weight-semibold);
+  cursor: pointer;
+  transition: var(--watfil-transition-all);
+  font-family: var(--watfil-font-family);
+  box-shadow: var(--watfil-shadow-button);
+}
+
+.watfil-button-primary:hover {
+  background: var(--watfil-gradient-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--watfil-shadow-button-hover);
+}
+
+.watfil-button-primary:active {
+  transform: translateY(0);
+}
+
+.watfil-button-secondary {
+  background-color: transparent;
+  color: var(--watfil-primary);
+  padding: 12px 24px;
+  border-radius: var(--watfil-radius-md);
+  border: 2px solid var(--watfil-primary);
+  font-weight: var(--watfil-font-weight-semibold);
+  cursor: pointer;
+  transition: var(--watfil-transition-all);
+  font-family: var(--watfil-font-family);
+}
+
+.watfil-button-secondary:hover {
+  background-color: var(--watfil-primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--watfil-shadow-md);
+}
+
+/* ========== Modern Card Styles ========== */
+.watfil-card {
+  background-color: var(--watfil-card-bg);
+  border-radius: var(--watfil-radius-lg);
+  padding: var(--watfil-spacing-lg);
+  box-shadow: var(--watfil-shadow-card);
+  transition: var(--watfil-transition-all);
+  border: 1px solid var(--watfil-border-light);
+}
+
+.watfil-card:hover {
+  box-shadow: var(--watfil-shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.watfil-card-glass {
+  background: var(--watfil-glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--watfil-glass-border);
+  box-shadow: var(--watfil-glass-shadow);
+}
+
+/* ========== Enhanced Animations ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.watfil-animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.watfil-animate-slide-in {
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.watfil-animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========== Utility Classes ========== */
+.watfil-gradient-text {
+  background: var(--watfil-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

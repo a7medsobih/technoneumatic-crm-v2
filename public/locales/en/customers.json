@@ -1,0 +1,29 @@
+{
+  "title": "Customers",
+  "subtitle": "View and manage customers linked to your company.",
+  "statuses": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "fields": {
+    "riskYes": "At risk",
+    "riskNo": "Normal"
+  },
+  "filters": {
+    "search": "Search by name or phone...",
+    "status": "Status",
+    "allStatuses": "All statuses"
+  },
+  "table": {
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "governorate": "Governorate",
+    "status": "Status",
+    "linkedAt": "Linked at",
+    "riskFlag": "Risk"
+  },
+  "messages": {
+    "loadError": "Unable to load customers. Please try again."
+  }
+}

@@ -1,0 +1,590 @@
+---
+globs:
+  - "**/hooks/**/*.js"
+  - "**/hooks/**/*.jsx"
+  - "**/api/**/*.js"
+---
+
+# React Query Rules - Watfil Project
+
+## General Rules
+
+React Query is the single source of truth for all server state.
+
+Always use:
+
+- useQuery
+- useMutation
+- useInfiniteQuery
+- useQueryClient
+
+Never use:
+
+- Redux for API data
+- Context API for API data
+- useEffect + useState for fetching
+- fetch API
+
+Always use Axios instance from:
+
+```text
+shared/api/axios.js
+```
+
+---
+
+## Architecture Flow
+
+Always follow:
+
+```text
+Component
+    ↓
+Custom Hook
+    ↓
+Repository
+    ↓
+Axios Instance
+    ↓
+Backend API
+```
+
+Never skip layers.
+
+Bad:
+
+```jsx
+const { data } = useQuery({
+  queryFn: () => axios.get("/products"),
+});
+```
+
+Good:
+
+```jsx
+const { data } = useProducts();
+```
+
+---
+
+## Repository Pattern
+
+Each feature must contain an api folder.
+
+Example:
+
+```text
+features/products/api
+```
+
+Repository example:
+
+```js
+export const ProductRepository = {
+  getAll: (params) => api.get("/company/products", { params }),
+
+  getById: (id) => api.get(`/company/products/${id}`),
+
+  create: (data) => api.post("/company/products", data),
+
+  update: (id, data) => api.post(`/company/products/${id}`, data),
+
+  delete: (id) => api.delete(`/company/products/${id}`),
+};
+```
+
+Never call Axios directly inside components.
+
+---
+
+## Query Key Factory Pattern
+
+Every feature must have query keys.
+
+Example:
+
+```js
+export const productKeys = {
+  all: ["products"],
+
+  lists: () => [...productKeys.all, "list"],
+
+  list: (filters) => [...productKeys.lists(), filters],
+
+  details: () => [...productKeys.all, "detail"],
+
+  detail: (id) => [...productKeys.details(), id],
+};
+```
+
+Never hardcode query keys inside hooks.
+
+Bad:
+
+```js
+["products"]["orders"];
+```
+
+Good:
+
+```js
+productKeys.list(filters);
+productKeys.detail(id);
+```
+
+---
+
+## Query Defaults
+
+Use centralized query options from queryClient.
+
+Default values:
+
+```js
+{
+  staleTime: 5 * 60 * 1000,
+  retry: 1,
+  refetchOnWindowFocus: false,
+  refetchOnReconnect: true,
+}
+```
+
+Do not redefine these values in every query unless necessary.
+
+---
+
+## Query Hooks
+
+Every query must be wrapped inside a custom hook.
+
+Example:
+
+```js
+export function useProducts(filters) {
+  return useQuery({
+    queryKey: productKeys.list(filters),
+
+    queryFn: () => ProductRepository.getAll(filters),
+
+    select: (response) => response.data.data,
+  });
+}
+```
+
+Never use useQuery directly inside pages.
+
+Never use useQuery directly inside presentational components.
+
+---
+
+## Conditional Queries
+
+Always use enabled when query depends on dynamic values.
+
+Example:
+
+```js
+enabled: Boolean(productId);
+```
+
+Bad:
+
+```js
+useQuery({
+  queryKey: ["product", id],
+  queryFn: () => getProduct(id),
+});
+```
+
+Good:
+
+```js
+useQuery({
+  queryKey: productKeys.detail(id),
+  queryFn: () => getProduct(id),
+  enabled: Boolean(id),
+});
+```
+
+---
+
+## Mutation Hooks
+
+All mutations must be isolated in custom hooks.
+
+Example:
+
+```js
+export function useCreateProduct() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ProductRepository.create,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: productKeys.all,
+      });
+    },
+  });
+}
+```
+
+Never place mutation logic inside components.
+
+---
+
+## Cache Invalidation Rules
+
+After Create:
+
+```js
+queryClient.invalidateQueries({
+  queryKey: productKeys.all,
+});
+```
+
+After Update:
+
+```js
+queryClient.invalidateQueries({
+  queryKey: productKeys.all,
+});
+
+queryClient.invalidateQueries({
+  queryKey: productKeys.detail(id),
+});
+```
+
+After Delete:
+
+```js
+queryClient.invalidateQueries({
+  queryKey: productKeys.all,
+});
+```
+
+Always keep cache synchronized with backend state.
+
+---
+
+## Data Selection
+
+Normalize API responses inside hooks using select.
+
+Bad:
+
+```jsx
+const products = data?.data?.data?.items ?? [];
+```
+
+Good:
+
+```js
+select: (response) => response.data.data;
+```
+
+Components should never know backend response structure.
+
+---
+
+## Watfil API Response Shape
+
+Lists:
+
+```json
+{
+  "data": [],
+  "meta": {}
+}
+```
+
+Single Resource:
+
+```json
+{
+  "data": {}
+}
+```
+
+Mutations:
+
+```json
+{
+  "message": "",
+  "data": {}
+}
+```
+
+Always normalize responses inside hooks.
+
+Never expose raw Axios responses to UI.
+
+---
+
+## Pagination Pattern
+
+Laravel APIs return:
+
+```json
+{
+  "data": [],
+  "meta": {
+    "total": 0,
+    "current_page": 1,
+    "last_page": 1,
+    "per_page": 15
+  }
+}
+```
+
+Keep pagination metadata.
+
+Never discard meta.
+
+Preferred return shape:
+
+```js
+{
+  items: response.data.data,
+  meta: response.data.meta,
+}
+```
+
+---
+
+## Infinite Query Rules
+
+Use useInfiniteQuery only when API supports cursor-based or page-based loading.
+
+Do not use useInfiniteQuery for standard admin tables.
+
+Default to paginated useQuery.
+
+---
+
+## Loading States
+
+Every page must handle:
+
+- loading state
+- empty state
+- error state
+- success state
+
+Expose:
+
+```js
+isLoading;
+isPending;
+isFetching;
+isError;
+```
+
+Never assume data exists.
+
+---
+
+## Error Handling
+
+Always handle API errors.
+
+Use:
+
+```js
+onError;
+```
+
+or
+
+```js
+try/catch
+```
+
+Map errors to user-friendly messages.
+
+Never expose raw backend messages directly.
+
+Never silently ignore failed requests.
+
+---
+
+## Optimistic Updates
+
+Allowed:
+
+- likes
+- ratings
+- simple UI toggles
+
+Not allowed:
+
+- orders
+- wallet transactions
+- withdrawals
+- topups
+- financial operations
+
+Always wait for backend confirmation for business-critical actions.
+
+---
+
+## Redux Integration
+
+Redux Toolkit is only allowed for:
+
+- auth
+- theme
+- language
+- sidebar
+- ui state
+- global filters
+
+Never store:
+
+- products
+- orders
+- wallet
+- customers
+- catalog
+- company profile
+
+inside Redux.
+
+These belong to React Query.
+
+---
+
+## Folder Structure
+
+Every feature must follow:
+
+```text
+feature
+│
+├── api
+│   └── featureRepository.js
+│
+├── hooks
+│   ├── useEntities.js
+│   ├── useEntity.js
+│   ├── useCreateEntity.js
+│   ├── useUpdateEntity.js
+│   └── useDeleteEntity.js
+│
+├── constants
+│   └── featureQueryKeys.js
+│
+├── components
+├── pages
+├── schemas
+└── types
+```
+
+Use the real feature name for generic feature-layer files:
+
+```text
+features/products/api/productsRepository.js
+features/products/constants/productsQueryKeys.js
+```
+
+---
+
+## Watfil Module Hooks
+
+Products:
+
+```js
+useProducts();
+useProduct();
+useCreateProduct();
+useUpdateProduct();
+useDeleteProduct();
+```
+
+Orders:
+
+```js
+useOrders();
+useOrder();
+useCreateOrder();
+useUpdateOrderStatus();
+```
+
+Wallet:
+
+```js
+useWalletTransactions();
+useTopups();
+useCreateTopup();
+useCreateWithdrawal();
+```
+
+Customers:
+
+```js
+useCustomers();
+useCustomer();
+```
+
+Catalog:
+
+```js
+useAvailableCatalog();
+useImportedCatalog();
+useAddCatalogProducts();
+useRemoveCatalogProducts();
+```
+
+Company Profile:
+
+```js
+useCompanyProfile();
+```
+
+---
+
+## Performance Rules
+
+Use staleTime whenever possible.
+
+Example:
+
+```js
+staleTime: 5 * 60 * 1000;
+```
+
+Avoid unnecessary refetches.
+
+Use enabled for conditional queries.
+
+Use select to minimize re-renders.
+
+Do not fetch data that is not needed.
+
+---
+
+## Final Rules
+
+Always:
+
+- Use Repository Pattern.
+- Use Query Key Factory Pattern.
+- Use Custom Hooks.
+- Use Axios Instance.
+- Normalize API Responses.
+- Use Cache Invalidation.
+- Keep Business Logic Inside Hooks.
+- Keep Components Presentation Only.
+- Keep Server State Inside React Query.
+
+Never:
+
+- Store server state in Redux.
+- Call APIs directly from components.
+- Use fetch API.
+- Use useEffect for data fetching.
+- Hardcode query keys.
+- Expose raw Axios responses to UI.
+
+All generated code must be production-ready, scalable, maintainable, and consistent across the entire Watfil project.

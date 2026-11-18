@@ -1,0 +1,46 @@
+{
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "loading": "Loading...",
+  "search": "Search",
+  "searchPlaceholder": "Search the dashboard...",
+  "noData": "No data available",
+  "confirm": "Confirm",
+  "close": "Close",
+  "notifications": "Notifications",
+  "profile": "Profile",
+  "language": "Language",
+  "arabic": "العربية",
+  "english": "English",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "collapseSidebar": "Collapse sidebar",
+  "expandSidebar": "Expand sidebar",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "toolbar": {
+    "all": "All",
+    "reset": "Reset",
+    "viewTable": "Table",
+    "viewCards": "Cards"
+  },
+  "table": {
+    "selectAllRows": "Select all rows",
+    "selectRow": "Select row",
+    "previous": "Previous",
+    "next": "Next",
+    "pageInfo": "Page {{current}} of {{total}}"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "pageInfo": "Page {{current}} of {{total}}",
+    "showingRange": "Showing {{from}}–{{to}} of {{total}}"
+  },
+  "modal": {
+    "saving": "Saving..."
+  }
+}

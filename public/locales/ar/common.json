@@ -1,0 +1,46 @@
+{
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "loading": "جاري التحميل...",
+  "search": "بحث",
+  "searchPlaceholder": "ابحث في لوحة التحكم...",
+  "noData": "لا توجد بيانات",
+  "confirm": "تأكيد",
+  "close": "إغلاق",
+  "notifications": "الإشعارات",
+  "profile": "الملف الشخصي",
+  "language": "اللغة",
+  "arabic": "العربية",
+  "english": "English",
+  "openMenu": "فتح القائمة",
+  "closeMenu": "إغلاق القائمة",
+  "collapseSidebar": "طي القائمة الجانبية",
+  "expandSidebar": "توسيع القائمة الجانبية",
+  "showPassword": "إظهار كلمة المرور",
+  "hidePassword": "إخفاء كلمة المرور",
+  "toolbar": {
+    "all": "الكل",
+    "reset": "إعادة تعيين",
+    "viewTable": "جدول",
+    "viewCards": "بطاقات"
+  },
+  "table": {
+    "selectAllRows": "تحديد كل الصفوف",
+    "selectRow": "تحديد الصف",
+    "previous": "السابق",
+    "next": "التالي",
+    "pageInfo": "صفحة {{current}} من {{total}}"
+  },
+  "pagination": {
+    "label": "التصفح",
+    "previous": "السابق",
+    "next": "التالي",
+    "pageInfo": "صفحة {{current}} من {{total}}",
+    "showingRange": "عرض {{from}}–{{to}} من {{total}}"
+  },
+  "modal": {
+    "saving": "جاري الحفظ..."
+  }
+}

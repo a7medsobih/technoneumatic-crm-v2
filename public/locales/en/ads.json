@@ -1,0 +1,121 @@
+{
+  "title": "Ads",
+  "subtitle": "Manage campaigns, bookings, and ad slot availability.",
+  "tabs": {
+    "campaigns": "Campaigns",
+    "bookings": "Bookings",
+    "book": "Book slots"
+  },
+  "actions": {
+    "createCampaign": "New campaign",
+    "editCampaign": "Edit campaign",
+    "bookDays": "Book days",
+    "checkAvailability": "Check availability",
+    "viewStats": "View stats"
+  },
+  "scopes": {
+    "homepage": "Homepage",
+    "governorate": "Governorate",
+    "city": "City"
+  },
+  "statuses": {
+    "active": "Active",
+    "paused": "Paused",
+    "draft": "Draft",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled",
+    "pending": "Pending"
+  },
+  "commissionTypes": {
+    "percentage": "Percentage",
+    "fixed": "Fixed amount"
+  },
+  "fields": {
+    "title": "Campaign title",
+    "targetUrl": "Target URL",
+    "utmSource": "UTM source",
+    "utmMedium": "UTM medium",
+    "utmCampaign": "UTM campaign",
+    "commissionType": "Commission type",
+    "commissionAmount": "Commission amount",
+    "status": "Status",
+    "zone": "Ad zone",
+    "position": "Position",
+    "campaign": "Campaign",
+    "dates": "Dates",
+    "fromDate": "From",
+    "toDate": "To",
+    "scope": "Scope",
+    "location": "Location",
+    "slotPrices": "Slot prices",
+    "pricePerDay": "{{price}} EGP / day",
+    "positionLabel": "Position {{position}}",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "table": {
+    "campaigns": {
+      "title": "Title",
+      "status": "Status",
+      "commission": "Commission",
+      "targetUrl": "Target URL",
+      "actions": "Actions"
+    },
+    "bookings": {
+      "zone": "Zone",
+      "position": "Position",
+      "dates": "Dates",
+      "status": "Status",
+      "campaign": "Campaign"
+    },
+    "zones": {
+      "zone": "Zone",
+      "scope": "Scope",
+      "location": "Location",
+      "status": "Status",
+      "prices": "Prices"
+    }
+  },
+  "availability": {
+    "title": "Slot availability",
+    "empty": "Select a zone and date range to view availability.",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "noDays": "No availability data for this range."
+  },
+  "stats": {
+    "title": "Campaign stats",
+    "impressions": "Impressions",
+    "clicks": "Clicks",
+    "orders": "Orders",
+    "sales": "Sales total"
+  },
+  "messages": {
+    "campaignCreated": "Campaign created successfully.",
+    "campaignUpdated": "Campaign updated successfully.",
+    "bookingCreated": "Ad days booked successfully.",
+    "loadError": "Unable to load ads data. Please try again.",
+    "saveError": "Unable to save changes. Please try again."
+  },
+  "validation": {
+    "titleRequired": "Campaign title is required.",
+    "targetUrlRequired": "Target URL is required.",
+    "targetUrlInvalid": "Enter a valid URL.",
+    "commissionTypeRequired": "Select a commission type.",
+    "commissionAmountRequired": "Commission amount is required.",
+    "commissionAmountPositive": "Commission amount must be greater than zero.",
+    "statusRequired": "Select a status.",
+    "zoneRequired": "Select an ad zone.",
+    "positionRequired": "Select a position.",
+    "positionInvalid": "Position must be 1, 2, or 3.",
+    "campaignRequired": "Select a campaign.",
+    "datesRequired": "Select at least one date.",
+    "dateRangeRequired": "Select a valid date range."
+  },
+  "filters": {
+    "status": "Status",
+    "scope": "Scope",
+    "allStatuses": "All statuses",
+    "allScopes": "All scopes"
+  }
+}

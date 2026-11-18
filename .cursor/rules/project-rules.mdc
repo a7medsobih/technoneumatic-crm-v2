@@ -1,0 +1,591 @@
+---
+alwaysApply: true
+---
+
+## alwaysApply: true
+
+# Watfil Frontend Architecture Rules
+
+## General Principles
+
+Always:
+
+- Follow Feature-Based Architecture.
+- Follow SOLID principles.
+- Follow Clean Code principles.
+- Follow Separation of Concerns.
+- Prefer composition over inheritance.
+- Avoid code duplication.
+- Keep components small and focused.
+- Give every file a single responsibility.
+
+Prefer:
+
+- Readability over cleverness.
+- Simplicity over unnecessary abstractions.
+- Maintainability over premature optimization.
+
+---
+
+## Tech Stack
+
+Always use:
+
+- React
+- React Router
+- React Query (TanStack Query)
+- Redux Toolkit
+- Axios
+- React Hook Form
+- Zod
+- Tailwind CSS
+- i18next
+
+Never use:
+
+- Context API for server state
+- Redux for API data
+- Formik
+- Yup
+- Styled Components
+- Inline CSS
+- Class Components
+
+---
+
+## Project Structure
+
+Always follow:
+
+```text
+src
+│
+├── app
+├── routes
+├── layouts
+├── shared
+├── features
+└── pages
+```
+
+Never:
+
+- Create API calls inside components.
+- Place business logic inside pages.
+- Mix concerns between layers.
+
+---
+
+## App Layer Rules
+
+The app directory contains only:
+
+```text
+app
+├── store
+├── providers
+├── query-client
+└── i18n
+```
+
+i18n configuration must be located inside:
+
+```text
+app/i18n
+```
+
+Never place i18n configuration inside shared.
+
+---
+
+## Feature Structure
+
+Each feature must follow:
+
+```text
+feature-name
+│
+├── api
+├── hooks
+├── components
+├── pages
+├── schemas
+├── constants
+├── types
+└── index.js
+```
+
+Example:
+
+```text
+products
+│
+├── api
+├── hooks
+├── components
+├── pages
+├── schemas
+├── constants
+└── index.js
+```
+
+Never import feature internals from another feature.
+
+Expose public APIs through:
+
+```text
+feature/index.js
+```
+
+---
+
+## Shared Layer Rules
+
+Shared contains reusable code only.
+
+Allowed:
+
+```text
+shared
+├── api
+├── components
+├── hooks
+├── utils
+├── constants
+└── services
+```
+
+Never place feature-specific business logic inside shared.
+
+---
+
+## Routing Rules
+
+Routes must be centralized.
+
+All routes belong inside:
+
+```text
+routes/
+```
+
+Never define route configuration inside features.
+
+---
+
+## API Layer Rules
+
+All API requests must use:
+
+```text
+shared/api/axios.js
+```
+
+Never:
+
+- Use fetch.
+- Create Axios instances inside features.
+- Call APIs directly from components.
+
+Always use Repository Pattern.
+
+Example:
+
+```js
+ProductRepository.getAll();
+ProductRepository.getById();
+ProductRepository.create();
+ProductRepository.update();
+ProductRepository.delete();
+```
+
+---
+
+## React Query Rules
+
+React Query is the only source of truth for server state.
+
+Always use:
+
+- useQuery
+- useMutation
+- useInfiniteQuery
+
+Never:
+
+- Store API data in Redux.
+- Fetch data using useEffect.
+
+All queries must use Query Key Factories.
+
+Example:
+
+```js
+productKeys.list(filters);
+productKeys.detail(id);
+```
+
+Invalidate queries after successful mutations.
+
+Detailed React Query rules are defined in:
+
+```text
+react-query.mdc
+```
+
+---
+
+## Redux Rules
+
+Redux Toolkit is only allowed for:
+
+- Authentication
+- Theme
+- Language
+- Sidebar State
+- UI State
+- Global Filters
+
+Never store:
+
+- Products
+- Orders
+- Customers
+- Wallet Data
+- Catalog Data
+- Company Profile
+
+inside Redux.
+
+These belong to React Query.
+
+---
+
+## Forms Rules
+
+All forms must use:
+
+- React Hook Form
+- Zod
+
+Never:
+
+- Use uncontrolled forms.
+- Validate manually inside components.
+
+Validation schemas belong inside:
+
+```text
+schemas/
+```
+
+Example:
+
+```text
+products/schemas/product.schema.js
+```
+
+---
+
+## Component Rules
+
+Prefer Presentational Components.
+
+Components should focus on rendering only.
+
+Keep components under 200 lines.
+
+If a component exceeds 200 lines:
+
+- Extract custom hooks.
+- Extract child components.
+- Extract reusable logic.
+
+Avoid:
+
+- Nested ternary operators.
+- Large JSX blocks.
+- Business logic inside JSX.
+
+---
+
+## Custom Hooks Rules
+
+Business logic belongs inside hooks.
+
+Examples:
+
+```js
+useProducts();
+useProduct();
+
+useOrders();
+useOrder();
+
+useWalletTransactions();
+
+useCreateProduct();
+useUpdateProduct();
+useDeleteProduct();
+```
+
+Components should consume hooks and render UI.
+
+---
+
+## Tailwind Rules
+
+Use Tailwind CSS as the primary styling solution.
+
+Never use:
+
+```jsx
+style={{}}
+```
+
+Bad:
+
+```jsx
+<div style={{ marginTop: 10 }} />
+```
+
+Good:
+
+```jsx
+<div className="mt-2" />
+```
+
+Prefer:
+
+- Reusable UI components.
+- Consistent utility patterns.
+
+Avoid repeated utility chains.
+
+---
+
+## Localization Rules
+
+All user-facing text must be translated.
+
+Never hardcode text.
+
+Bad:
+
+```jsx
+<button>Create Product</button>
+```
+
+Good:
+
+```jsx
+<button>{t("products.create")}</button>
+```
+
+Use namespaces:
+
+```text
+common
+auth
+products
+orders
+wallet
+customers
+```
+
+---
+
+## Error Handling Rules
+
+Never ignore errors.
+
+Always use:
+
+```js
+try/catch
+```
+
+or
+
+```js
+onError;
+```
+
+Always:
+
+- Show user-friendly messages.
+- Handle loading states.
+- Handle empty states.
+- Handle error states.
+
+Never expose raw backend errors directly.
+
+---
+
+## Naming Rules
+
+### Components
+
+Use PascalCase:
+
+```text
+ProductForm
+ProductTable
+WalletCard
+```
+
+### Hooks
+
+Use camelCase with use prefix:
+
+```text
+useProducts
+useCreateProduct
+useWalletTransactions
+```
+
+### Files
+
+Use either camelCase or PascalCase consistently inside a module:
+
+```text
+useProducts.js
+useCreateProduct.js
+ProductForm.jsx
+WalletCard.jsx
+CreateProductPage.jsx
+```
+
+For hook files, prefer camelCase matching the exported hook name:
+
+```text
+useProducts.js
+useCreateProduct.js
+useWalletTransactions.js
+```
+
+For generic feature-layer files, include the feature name:
+
+```text
+productsRepository.js
+productsQueryKeys.js
+ordersRepository.js
+ordersQueryKeys.js
+```
+
+### Constants
+
+Use UPPER_SNAKE_CASE:
+
+```text
+MAX_FILE_SIZE
+DEFAULT_PAGE_SIZE
+```
+
+---
+
+## Import Rules
+
+Use absolute imports.
+
+Good:
+
+```js
+import DataTable from "@/shared/components/data-table";
+```
+
+Bad:
+
+```js
+../../../components
+```
+
+Always use aliases.
+
+---
+
+## JavaScript Rules
+
+This project uses JavaScript.
+
+Never generate:
+
+- TypeScript syntax
+- interfaces
+- enums
+- generics
+- type annotations
+
+Always generate:
+
+```text
+.js
+.jsx
+```
+
+files.
+
+---
+
+## Company Module Rules
+
+Always follow Watfil backend documentation.
+
+Respect:
+
+- Wallet minimum balance rules
+- Company visibility rules
+- Installment plan rules
+- Order status transitions
+- Topup idempotency rules
+- Withdrawal idempotency rules
+
+Never assume API behavior.
+
+Never invent request or response structures.
+
+---
+
+## Export Rules
+
+Every feature must expose a public API.
+
+Example:
+
+```text
+features/products/index.js
+```
+
+Export only public modules.
+
+Never import deeply from another feature.
+
+---
+
+## Code Generation Rules
+
+Always generate:
+
+- Production-ready code
+- Complete implementations
+- Proper imports
+- Proper exports
+- Loading states
+- Error states
+- Empty states
+
+Never generate:
+
+- TODO comments
+- Placeholder code
+- Mock implementations
+- Incomplete features
+
+Always:
+
+- Write maintainable code.
+- Write reusable code.
+- Follow project architecture.
+- Follow backend documentation.
+
+When multiple solutions exist, choose the simplest solution that scales.
